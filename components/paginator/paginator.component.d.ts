@@ -1,15 +1,3 @@
-
-
-/*
-  This program and the accompanying materials are
-  made available under the terms of the Eclipse Public License v2.0 which accompanies
-  this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
-  
-  SPDX-License-Identifier: EPL-2.0
-  
-  Copyright Contributors to the Zowe Project.
-*/
-
 import { EventEmitter, OnChanges, SimpleChanges } from "@angular/core";
 import '../../assets/images/FirstPage.svg';
 import '../../assets/images/NextPage.svg';
@@ -24,8 +12,8 @@ export declare class ZluxPaginatorComponent implements OnChanges {
     loadedPageNumber: number;
     isInputIncorrect: boolean;
     preventEvent: boolean;
-    readonly indexMax: number;
-    readonly indexMin: number;
+    get indexMax(): number;
+    get indexMin(): number;
     ngOnChanges(changes: SimpleChanges): void;
     ngAfterContentChecked(): void;
     onChange(event: any): void;
@@ -39,15 +27,3 @@ export declare class ZluxPaginatorComponent implements OnChanges {
 }
 export declare class ZluxPaginatorModule {
 }
-
-
-/*
-  This program and the accompanying materials are
-  made available under the terms of the Eclipse Public License v2.0 which accompanies
-  this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
-  
-  SPDX-License-Identifier: EPL-2.0
-  
-  Copyright Contributors to the Zowe Project.
-*/
-

@@ -10,21 +10,21 @@
   Copyright Contributors to the Zowe Project.
 */
 
-var webpack = require('webpack');
-var path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const webpack = require('webpack');
+const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const WebpackShellPlugin = require('webpack-shell-plugin');
+const WebpackShellPluginNext = require('webpack-shell-plugin-next');
 
 function root(__path) {
   return path.join(__dirname, __path);
 };
 
-var config = {
+const config = {
   entry: [root('./src/app/index.ts')],
   devtool: 'source-map',
   output: {
-    path: root('.'),
+    path: path.join(__dirname, './'),
     filename: 'index.js',
     library: '@zlux/widgets',
     libraryTarget: 'amd',
@@ -40,7 +40,7 @@ var config = {
     rules: [
       {
         test: /\.ts$/,
-        loaders: [
+        use: [
           'ts-loader',
           'angular2-template-loader'
         ]
@@ -55,26 +55,28 @@ var config = {
       },
       {
         /* External (or inline) file loader */
-        'test': /\.(jpg|png|gif|otf|ttf|woff|woff2|cur|ani)$/,
-        'loader': 'url-loader?name=[name].[hash:20].[ext]&limit=10000',
-        'options':{
-          useRelativePath: true
+        test: /\.(jpg|png|gif|otf|ttf|woff|woff2|cur|ani)$/,
+        loader: 'url-loader',
+        options: {
+          useRelativePath: true,
+          limit: 10000,
+          name: '[name].[hash:20].[ext]'
         }
       },
       {
         test: /\.css$/,
         exclude: root('./src/app'),
-        loader: ExtractTextPlugin.extract({ use: 'css-loader?sourceMap', fallback: 'style-loader' })
+        use: [MiniCssExtractPlugin.loader, 'css-loader?sourceMap', 'style-loader']
       },
       {
         test: /\.css$/,
         include: root('./src/app/assets/css'),
-        loader: 'style-loader!css-loader'
+        use: ['style-loader', 'css-loader']
       },
       {
         test: /\.css$/,
         include: root('./src/app/components'),
-        loader: 'css-to-string-loader!css-loader'
+        use: ['css-to-string-loader', 'css-loader']
       }
     ]
   },
@@ -85,20 +87,27 @@ var config = {
     extensions: [".js", ".ts"]
   },
   plugins: [
-    new ExtractTextPlugin("styles.css"),
-    new webpack.WatchIgnorePlugin([
-      /\.js$/,
-      /\.d\.ts$/
-    ]),
-    new CopyWebpackPlugin([
-      {
-        from: '**/*.metadata.json',
-        to: '.',
-        context: './out_tsc/src/app/'
+    new MiniCssExtractPlugin(),
+    new webpack.WatchIgnorePlugin({
+      paths: [
+        /\.js$/,
+        /\.d\.ts$/
+      ]
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: '**/*.metadata.json',
+          to: '.'
+        }
+      ]
+    }),
+    new WebpackShellPluginNext({
+      onBuildStart: {
+        scripts: ['npm run metadata'],
+        blocking: true,
+        parallel: false
       }
-    ]),
-    new WebpackShellPlugin({
-      onBuildStart: ['npm run metadata']
     })
   ]
 };

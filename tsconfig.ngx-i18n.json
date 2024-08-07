@@ -18,11 +18,10 @@
       "es2016",
       "dom"
     ],
-    "paths": {
-    }
+    "paths": {}
   },
   "angularCompilerOptions": {
-    "skipMetadataEmit" : false,
+    "skipMetadataEmit": false,
     "enableResourceInlining": true
   }
 }

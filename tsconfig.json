@@ -1,5 +1,8 @@
 {
   "compileOnSave": false,
+  "files": [
+    "./src/app/index.ts"
+  ],
   "compilerOptions": {
     "outDir": "./out_tsc",
     "baseUrl": "./src/app",
@@ -17,7 +20,6 @@
     "lib": [
       "es2016",
       "dom"
-    ],
-    "paths": {}
+    ]
   }
 }

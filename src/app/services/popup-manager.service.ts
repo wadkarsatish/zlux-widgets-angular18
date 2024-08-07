@@ -11,7 +11,8 @@
 */
 
 import { Injectable } from '@angular/core';
-import * as Rx from 'rxjs/Rx';
+// import * as Rx from 'rxjs/Rx';
+import { Subject, ReplaySubject, from, Observable } from 'rxjs';
 
 function getSimpleID() {
   return Number(Math.random() + Date.now());
@@ -25,7 +26,7 @@ export interface ErrorReportStruct {
   buttons: string[],
   id: number,
   timestamp: Date,
-  subject: Rx.Subject<any>,
+  subject: Subject<any>,
   theme?: string,
   style?: {},
   callToAction?: boolean
@@ -46,12 +47,12 @@ export class ZluxPopupManagerService {
 
   constructor() {
     this.listeners = {};
-    this.eventsSubject = new Rx.Subject();
+    this.eventsSubject = new Subject();
 
-    this.events = Rx.Observable.from(this.eventsSubject);
+    this.events = from(this.eventsSubject);
 
     this.events.subscribe(
-      ({name, args}) => {
+      ({ name, args }) => {
         if (this.listeners[name]) {
           for (let listener of this.listeners[name]) {
             listener(...args);
@@ -74,14 +75,14 @@ export class ZluxPopupManagerService {
 
   broadcast(name, ...args) {
     this.eventsSubject.next({
-        name,
-        args
+      name,
+      args
     });
   }
 
   processButtons(buttons: any[]) {
     return buttons.map(button => {
-      if (typeof(button) === 'string') {
+      if (typeof (button) === 'string') {
         button = {
           caption: button
         }
@@ -124,8 +125,8 @@ export class ZluxPopupManagerService {
     }
 
     buttons = this.processButtons(buttons);
-    const subject = new Rx.ReplaySubject();
-    
+    const subject = new ReplaySubject();
+
     let errorReport: ErrorReportStruct = {
       severity,
       title,
@@ -150,14 +151,14 @@ export class ZluxPopupManagerService {
     return errorReport;
   }
 
-  reportError(severity: ZluxErrorSeverity, title: string, text: string, options?: any): Rx.Observable<any> {
+  reportError(severity: ZluxErrorSeverity, title: string, text: string, options?: any): Observable<any> {
     options = options || {};
     let buttons = options.buttons || ["Close"];
     const timestamp: Date = options.timestamp || new Date();
 
     buttons = this.processButtons(buttons);
 
-    const subject = new Rx.ReplaySubject();
+    const subject = new ReplaySubject();
     this.broadcast('createReport', {
       severity,
       title,
