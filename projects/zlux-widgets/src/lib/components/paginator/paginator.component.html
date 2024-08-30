@@ -1,0 +1,66 @@
+<!--
+This program and the accompanying materials are
+made available under the terms of the Eclipse Public License v2.0 which accompanies
+this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
+
+SPDX-License-Identifier: EPL-2.0
+
+Copyright Contributors to the Zowe Project.
+-->
+
+<div class="paginator-area">
+  <zlux-button buttonType="button" class="first-button" [disabled]="pageIndex <= 0" (onClick)="onFirstButtonClick()">
+    <!-- <svg width="16px" height="16px" viewBox="0 0 16 16">
+    <use xlink:href="#FirstPage"></use>
+  </svg> -->
+    <img src="../../assets/images/FirstPage.svg">
+  </zlux-button>
+  <zlux-button buttonType="button" class="prev-button" [disabled]="pageIndex <= 0" (onClick)="onPrevButtonClick()">
+    <!-- <svg width="16px" height="16px" viewBox="0 0 16 16">
+  <use xlink:href="#PrevPage"></use>
+</svg> -->
+    <img src="../../assets/images/PrevPage.svg">
+  </zlux-button>
+
+  <div class="page-area">
+    <input type="text" class="current-page-field" [ngClass]="{ 'input-error': isInputIncorrect }" zluxInputText
+      [value]="pageIndex + 1" (change)="onChange($event)">
+    <ng-container i18n="of preposition in clause n-m of total@@paginator">of</ng-container>
+    @if (hasMoreRecords) {
+    <a href="#" (click)="toLastPage()" zluxFlyover [flyover]="fetchMoreFlyover"> {{loadedPageNumber}}*</a>
+    } @else {
+    <a href="#" (click)="toLastPage()"> {{loadedPageNumber}}</a>
+    }
+  </div>
+  <zlux-button buttonType="button" [disabled]="(pageIndex >= loadedPageNumber - 1) && !hasMoreRecords"
+    (onClick)="onNextButtonClick()">
+    <!-- <svg width="16px" height="16px" viewBox="0 0 16 16">
+    <use xlink:href="#NextPage"></use>
+  </svg> -->
+    <img src="../../assets/images/NextPage.svg">
+  </zlux-button>
+  <div class="right-page-area">
+    {{indexMin}}-{{indexMax}} <ng-container i18n="of preposition in clause n-m of total@@paginator">of</ng-container>
+    @if (hasMoreRecords) {
+    <a href="#" (click)="toLastPage()" zluxFlyover [flyover]="fetchMoreFlyover"> {{totalRecords}}*</a>
+    } @else {
+    <a href="#" (click)="toLastPage()"> {{totalRecords}}</a>
+    }
+  </div>
+</div>
+<zlux-flyover #fetchMoreFlyover>
+  Not all items are loaded!
+  <br />
+  <a href="#" (click)="fetchMoreData()">Load More data</a>
+</zlux-flyover>
+
+
+<!--
+This program and the accompanying materials are
+made available under the terms of the Eclipse Public License v2.0 which accompanies
+this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
+
+SPDX-License-Identifier: EPL-2.0
+
+Copyright Contributors to the Zowe Project.
+-->

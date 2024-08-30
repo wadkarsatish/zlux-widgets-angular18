@@ -1,0 +1,16 @@
+{
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../dist/zlux-widgets",
+  "assets": [
+    "README.md",
+    "package.json",
+    {
+      "input": "src/lib/assets",
+      "glob": "**/*.*",
+      "output": "assets"
+    }
+  ],
+  "lib": {
+    "entryFile": "src/public-api.ts"
+  }
+}

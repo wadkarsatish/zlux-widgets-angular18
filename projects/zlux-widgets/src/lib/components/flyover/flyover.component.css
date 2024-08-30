@@ -1,0 +1,95 @@
+
+
+/*
+  This program and the accompanying materials are
+  made available under the terms of the Eclipse Public License v2.0 which accompanies
+  this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
+  
+  SPDX-License-Identifier: EPL-2.0
+  
+  Copyright Contributors to the Zowe Project.
+*/
+
+:host {
+  font-family: Helvetica, Open Sans, Arial, Lucida Grande, sans-serif;
+}
+
+.rel-positioned {
+  position: relative;
+}
+
+.zlux-flyover-area {
+  position: absolute;
+  background: transparent;
+  border: transparent;
+  z-index: 1;
+}
+
+.zlux-flyover-content {
+  padding: 10px;
+  border: 1px solid #21649F;
+  background: #fff;
+  box-shadow: 3px 3px 0 rgba(0,0,0,0.3);
+}
+
+.zlux-flyover-arrow-top-layer {
+  position: absolute;
+  /*bottom: -9px;
+  left: calc(50% - 10px);*/
+  width: 20px;
+  height: 20px;
+  transform: rotate(45deg);
+  background: transparent;
+}
+
+.zlux-flyover-arrow-top-layer.top {
+  border-top: 10px solid transparent;
+  border-left: 10px solid transparent;
+  border-bottom: 10px solid #fff;
+  border-right: 10px solid #fff;
+}
+
+.zlux-flyover-arrow-top-layer.bottom {
+  border-top: 10px solid #fff;
+  border-left: 10px solid #fff;
+  border-bottom: 10px solid transparent;
+  border-right: 10px solid transparent;
+}
+
+.zlux-flyover-arrow-top-layer.left {
+  border-top: 10px solid #fff;
+  border-left: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 10px solid #fff;
+}
+
+.zlux-flyover-arrow-top-layer.right {
+  border-top: 10px solid transparent;
+  border-left: 10px solid #fff;
+  border-bottom: 10px solid #fff;
+  border-right: 10px solid transparent;
+}
+
+.zlux-flyover-arrow-bottom-layer {
+  position: absolute;
+  /*bottom: -10px;
+  left: calc(50% - 10px);*/
+  width: 20px;
+  height: 20px;
+  background: #21649F;
+  transform: rotate(45deg);
+  box-shadow: 3px 0 0 rgba(1,1,1,0.3);
+  z-index: -1;
+}
+
+
+/*
+  This program and the accompanying materials are
+  made available under the terms of the Eclipse Public License v2.0 which accompanies
+  this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
+  
+  SPDX-License-Identifier: EPL-2.0
+  
+  Copyright Contributors to the Zowe Project.
+*/
+

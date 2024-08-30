@@ -1,0 +1,92 @@
+/*
+  This program and the accompanying materials are
+  made available under the terms of the Eclipse Public License v2.0 which accompanies
+  this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
+  
+  SPDX-License-Identifier: EPL-2.0
+  
+  Copyright Contributors to the Zowe Project.
+*/
+
+:host {
+  font-family: Helvetica, Open Sans, Arial, Lucida Grande, sans-serif;
+}
+
+.paginator-area {
+  height: 46px;
+  width: 100%;
+  flex: none;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.page-area {
+  margin: 0 1rem 0 0.5rem;
+}
+
+.current-page-field {
+  flex: none;
+  background-color: white;
+  width: 4rem;
+  padding-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.right-page-area {
+  flex: auto;
+  text-align: right;
+  padding-right: 2rem;
+}
+
+.input-error {
+  border-color: red;
+}
+
+zlux-button {
+  margin: 0;
+  width: 32px;
+}
+
+zlux-button svg {
+  flex: 1 1 auto;
+}
+
+zlux-button>>>button {
+  padding: 0 !important;
+  display: flex;
+  flex-direction: row;
+  fill: rgb(21, 124, 189);
+}
+
+zlux-button>>>button:hover:not([disabled]),
+zlux-button>>>button:active:not([disabled]) {
+  fill: rgb(255, 255, 255);
+  background-color: rgb(13, 93, 141);
+}
+
+.first-button {
+  margin-left: 1rem;
+  margin-right: -1px;
+}
+
+.first-button>>>button {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.prev-button>>>button {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+
+/*
+  This program and the accompanying materials are
+  made available under the terms of the Eclipse Public License v2.0 which accompanies
+  this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
+  
+  SPDX-License-Identifier: EPL-2.0
+  
+  Copyright Contributors to the Zowe Project.
+*/
