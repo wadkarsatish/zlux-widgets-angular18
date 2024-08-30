@@ -20,6 +20,7 @@ yarn-error.log
 *.sublime-workspace
 
 # Visual Studio Code
+.vscode
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
@@ -41,3 +42,4 @@ projects/zlux-widgets/node_modules
 # System files
 .DS_Store
 Thumbs.db
+.angular
