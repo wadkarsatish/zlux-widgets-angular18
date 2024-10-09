@@ -1,5 +1,5 @@
 {
-  "name": "zlux-widgets",
+  "name": "@zlux/widgets",
   "version": "0.0.1",
   "type": "module",
   "module": "fesm2022/zlux-widgets.mjs",
