@@ -1,0 +1,27 @@
+<!-- library components -->
+
+<div class="margin-bottom-1">
+  <!-- zlux button -->
+  <zlux-button [buttonType]="'button'" [label]="'Demo button'" [disabled]="false" [callToAction]="false"
+    [lightSkin]="false"></zlux-button>
+</div>
+
+<div class="margin-bottom-1">
+  <!-- zlux-checkbox -->
+  <zlux-checkbox [value]="false" [inputId]="'chkBox'" (valueChange)="onValueChange($event)"
+    [label]="'Checkbox Label'"></zlux-checkbox>
+</div>
+
+<div class="margin-bottom-1">
+  <!-- zlux-error-report -->
+  <zlux-error-report [severity]="'error'" [title]="'Demo error Title'" [theme]="'not-sure'" [buttons]="['ok','close']"
+    [callToAction]="false" (action)="errorReportAction($event)"></zlux-error-report>
+</div>
+
+<div class="margin-bottom-1">
+  <!-- zlux-error-report -->
+  <zlux-paginator [rows]="50" [totalRecords]="500" [hasMoreRecords]="true" (onPageChange)="onPageChange($event)"
+    (onFetchMoreData)="onFetchMoreData($event)"></zlux-paginator>
+</div>
+
+<router-outlet />

@@ -1,0 +1,33 @@
+<!--
+This program and the accompanying materials are
+made available under the terms of the Eclipse Public License v2.0 which accompanies
+this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
+
+SPDX-License-Identifier: EPL-2.0
+
+Copyright Contributors to the Zowe Project.
+-->
+
+<input [attr.id]="inputId" type="checkbox" [ngModel]="value" (ngModelChange)="onValueChange($event)"
+  [class]="styleClass" [style]="style" [disabled]="disabled" #advMode="ngModel">
+<label [attr.for]="inputId" class="checkbox-area">
+  <span [ngClass]="{ 'checkbox-dark': dark }">
+    @if (dark) {
+    <img src="../../assets/images/checkbox-checked-dark.png" alt=" ">
+    } @else {
+    <img src="../../assets/images/checkbox-checked.png" alt=" ">
+    }
+  </span>
+  {{label}}
+</label>
+
+
+<!--
+  This program and the accompanying materials are
+  made available under the terms of the Eclipse Public License v2.0 which accompanies
+  this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
+
+  SPDX-License-Identifier: EPL-2.0
+
+  Copyright Contributors to the Zowe Project.
+  -->
