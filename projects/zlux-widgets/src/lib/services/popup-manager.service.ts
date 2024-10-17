@@ -15,7 +15,10 @@ import { Injectable } from '@angular/core';
 import { Subject, ReplaySubject, from, Observable } from 'rxjs';
 
 function getSimpleID() {
-  return Number(Math.random() + Date.now());
+  // return Number();
+  const crypto = window.crypto;
+  const array = new Uint32Array(1);
+  return Number(crypto.getRandomValues(array)[0]); // Compliant for security-sensitive use cases
 }
 
 export interface ErrorReportStruct {
